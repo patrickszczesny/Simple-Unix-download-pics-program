@@ -1,0 +1,43 @@
+#!/bin/bash
+#Made by Dawid Adamski 229751(małpa)fizyka.umk.pl
+#Improved by Patryk Szczęsny 241276(małpa)fizyka.umk.pl
+
+#Zdefiniowanie wgea  ukrycie "jego obecnosci" pod sprytna nazwa Frozenfox
+better_wget="wget -U Frozenfox "
+
+#podanie strony
+echo "Podaj strone:"
+read zmienna
+
+#Do jakiej liczby przeszukiwac
+echo "Do jakiej liczby przeszukiwac:"
+read do_tylu
+
+echo "Czy uwzglednic spacje?"
+read tak_nie
+
+#Opcja z uwzglednianiem spacji
+spacja=""
+
+if [ $tak_nie = 'tak' ]; then
+    spacja=" "
+fi
+if [ $tak_nie = 'Tak' ]; then
+    spacja=" "
+fi
+
+#najczestsze rozszerzenia uzywane na stronie
+roz1=".jpg"
+roz2=".png"
+roz3="a.jpg"
+
+i=0 #zmienna do petli
+
+while [ $i -le $do_tylu ]; do
+     $better_wget$zmienna$spacja$i$roz1 #jpg
+   
+     $better_wget$zmienna$spacja$i$roz2 #png
+   
+     $better_wget$zmienna$i$roz3 # a.png
+    let i=i+1 #inkrementacja
+done
